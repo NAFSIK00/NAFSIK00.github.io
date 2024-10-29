@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة نفسك</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Nafsak Logo" class="logo">
+    </header>
+
+    <div id="loginPage" class="page active">
+        <h2>تسجيل الدخول</h2>
+        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" id="password" placeholder="كلمة المرور" required>
+        <button onclick="login()">
+            <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+        </button>
+        <p id="loginError" class="error"></p>
+    </div>
+
+    <div id="assessmentPage" class="page">
+        <h2>التقييم النفسي - PHQ-9</h2>
+        <div id="questionContainer">
+            <div class="question">
+                <p>1. قلة الاهتمام أو المتعة عند القيام بالأشياء.</p>
+                <label><input type="radio" name="q1" value="0"> أبدا</label>
+                <label><input type="radio" name="q1" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q1" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q1" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>2. الشعور بالحزن أو الكآبة.</p>
+                <label><input type="radio" name="q2" value="0"> أبدا</label>
+                <label><input type="radio" name="q2" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q2" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q2" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>3. صعوبة النوم، أو النوم أكثر من اللازم.</p>
+                <label><input type="radio" name="q3" value="0"> أبدا</label>
+                <label><input type="radio" name="q3" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q3" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q3" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>4. الشعور بالتعب أو فقدان الطاقة.</p>
+                <label><input type="radio" name="q4" value="0"> أبدا</label>
+                <label><input type="radio" name="q4" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q4" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q4" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>5. الشعور بعدم القيمة أو الذنب المفرط.</p>
+                <label><input type="radio" name="q5" value="0"> أبدا</label>
+                <label><input type="radio" name="q5" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q5" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q5" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>6. صعوبة التركيز أو اتخاذ القرارات.</p>
+                <label><input type="radio" name="q6" value="0"> أبدا</label>
+                <label><input type="radio" name="q6" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q6" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q6" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>7. التحرك أو التحدث ببطء، أو العكس.</p>
+                <label><input type="radio" name="q7" value="0"> أبدا</label>
+                <label><input type="radio" name="q7" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q7" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q7" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>8. التفكير في إيذاء نفسك.</p>
+                <label><input type="radio" name="q8" value="0"> أبدا</label>
+                <label><input type="radio" name="q8" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q8" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q8" value="3"> كل يوم تقريبا</label>
+            </div>
+            <div class="question">
+                <p>9. التفكير في الانتحار.</p>
+                <label><input type="radio" name="q9" value="0"> أبدا</label>
+                <label><input type="radio" name="q9" value="1"> عدة أيام</label>
+                <label><input type="radio" name="q9" value="2"> أكثر من نصف الأيام</label>
+                <label><input type="radio" name="q9" value="3"> كل يوم تقريبا</label>
+            </div>
+            <button onclick="nextQuestion()">التالي</button>
+        </div>
+    </div>
+
+    <div id="resultPage" class="page">
+        <h2>نتيجة التقييم</h2>
+        <p id="resultMessage">...</p>
+        <p id="advice" style="display: none;">ننصحك بطلب استشارة نفسية من منصة أرشدني.</p>
+        <a id="arshadniLink" href="https://www.nu.edu.sa/ar/web/university-guidance-and-guidance-department/arshad" target="_blank" style="display: none;">منصة أرشدني</a>
+        <button onclick="restart()">
+            <i class="fas fa-undo"></i> العودة للتقييم
+        </button>
+    </div>
+
+    <div class="footer-icons">
+        <a href="#" class="footer-icon">
+            <i class="fas fa-headset"></i> الدعم الفني
+        </a>
+        <a href="https://www.nu.edu.sa/ar/web/university-guidance-and-guidance-department/arshad" target="_blank" class="footer-icon">
+            <i class="fas fa-info-circle"></i> منصة أرشدني
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
